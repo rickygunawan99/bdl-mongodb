@@ -1,0 +1,23 @@
+{
+    "name": "basisdata/mongodb",
+    "type": "package",
+    "authors": [
+        {
+            "name": "rickygunawan",
+            "email": "rickygunawan266@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "BasisData\\Mongo\\" : "app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BasisData\\Mongo\\" : "app"
+        }
+    }
+}
