@@ -2,16 +2,25 @@
 
 namespace BasisData\Mongo\config;
 
+use Exception;
+use MongoDB\Client;
 
 class Mongo
 {
-    private static $mongo = null;
+    private static Client|null $mongo = null;
 
-    public static function connect()
+    /**
+     * @throws Exception
+     */
+    public static function collection(string $dbName): \MongoDB\Collection
     {
-        if(self::$mongo == null){
-            self::$mongo = new \MongoDB\Client();
+        try {
+            if(self::$mongo == null){
+                self::$mongo = new \MongoDB\Client();
+            }
+            return self::$mongo->test->$dbName;
+        }catch (Exception $e){
+            throw new Exception("Timeout");
         }
-        return self::$mongo;
     }
 }

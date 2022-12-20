@@ -4,8 +4,8 @@ function getArrayDatabase():array
 {
     return [
         'database' => [
-            'prod' => [
-                'url' => 'mysql:host=localhost:3306;dbname=bd-project-test',
+            'local' => [
+                'url' => 'mysql:host=localhost:3306;dbname=prak_project_bd',
                 'username' => 'root',
                 'password' => ''
             ]
