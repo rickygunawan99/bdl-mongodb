@@ -284,16 +284,16 @@
                         <div class="panel-body text-center" style="padding: 0">
                             <h6>
                                 <a href="#" class="pro-title">
-                                    <?= $product['product_description'] ?>
+                                    <?= $product['description'] ?>
                                 </a>
                             </h6>
-                            <p class="price"> Rp. <?= $product['product_price'] ?> </p>
-                            <p style="font-size: smaller; color: blue"><?=$product['product_stock']?> tersedia</p>
+                            <p class="price"> Rp. <?= $product['price'] ?> </p>
+                            <p style="font-size: smaller; color: blue"><?=$product['stock']?> tersedia</p>
                         </div>
                         <div class="input-group">
-                            <input type="button" value="-" name="<?= $product['_id']?>" class="btnDec">
-                            <input type="text" name="item_id" value=0 id="qty-<?= $product['_id']?>" class="text-center" style="width: 2.5em" disabled>
-                            <input type="button" value="+"  name="<?= $product['_id']?>" class="btnInc">
+                            <input type="button" value="-" name="<?=$product['id']?>" class="btnDec">
+                            <input type="text" name="item_id" value=0 id="qty-<?= $product['id']?>" class="text-center" style="width: 2.5em" disabled>
+                            <input type="button" value="+"  name="<?=$product['id']?>" class="btnInc">
                         </div>
                     </section>
                 </div>
@@ -316,32 +316,31 @@
             let qty = Number(document.getElementById(`qty-${id}`).value);
             qty+=1;
             document.getElementById(`qty-${id}`).value = qty;
-            addCart(id, qty);
+            addCart(id);
         }
     }
 
     const decButtons = document.querySelectorAll(".input-group .btnDec");
 
     for (const decButton of decButtons) {
-        let id = decButton.name;
-        let qty = Number(document.getElementById(`qty-${id}`).value);
         decButton.onclick = function (){
+            let id = decButton.name;
             let qty = Number(document.getElementById(`qty-${id}`).value);
             if(qty - 1 >= 0) qty-=1;
             document.getElementById(`qty-${id}`).value = qty;
         }
     }
 
-    function addCart(id, qty)
+    function addCart(id)
     {
         $.ajax({
-           url: `/order/add?id=${id}`,
+            url: '/order/cart?action=add',
             type: 'GET',
             data: {
-
+                'id': id
             },
-            success: function (s){
-               console.info('ok');
+            success: function (data){
+               alert(data);
             }
         });
     }

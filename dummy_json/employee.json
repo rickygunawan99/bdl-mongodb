@@ -1,0 +1,338 @@
+[
+    {
+        "employee_id": 1,
+        "employee_name": "Kieran Jacobson",
+        "employee_phone": "1-164-795-044",
+        "employee_address": "493-6705 Aptent Av.",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 2,
+        "employee_name": "Kiran",
+        "employee_phone": "(904) 282-7646",
+        "employee_address": "Ap #275-2617 Imperdiet, St.",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 3,
+        "employee_name": "Bruno Sweeney",
+        "employee_phone": "(819) 367-4580",
+        "employee_address": "487-3278 Et, Ave",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 5,
+        "employee_name": "Justin Cox",
+        "employee_phone": "(134) 563-6198",
+        "employee_address": "350-744 Pharetra Ave",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 7,
+        "employee_name": "Budi",
+        "employee_phone": "+(62) 81123456",
+        "employee_address": "Jl. Mawar 10",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 8,
+        "employee_name": "Eko",
+        "employee_phone": "+(62) 81123455",
+        "employee_address": "Jl. Bunga 10",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 9,
+        "employee_name": "Adit",
+        "employee_phone": "+(62) 811245232",
+        "employee_address": "Jl. Apa 123",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 10,
+        "employee_name": "Edi",
+        "employee_phone": "+(62) 8112452355",
+        "employee_address": "Jl. Edi 123",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 11,
+        "employee_name": "Kacie Satterfield",
+        "employee_phone": "+1 (219) 661-9202",
+        "employee_address": "8301 Simonis Fork\nKshlerinmouth, NJ 89451-8659",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 12,
+        "employee_name": "Franz Fritsch",
+        "employee_phone": "+1.903.913.5572",
+        "employee_address": "62551 Legros Highway\nAlexandrineport, AL 69033-6425",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 13,
+        "employee_name": "Jadon Mayert",
+        "employee_phone": "+1-770-965-2063",
+        "employee_address": "582 Cormier Plains Apt. 316\nRyanstad, UT 59562",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 14,
+        "employee_name": "Art Volkman",
+        "employee_phone": "(541) 726-9507",
+        "employee_address": "8845 Hodkiewicz Ports\nLeuschketon, NE 49497",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 15,
+        "employee_name": "Guido Johnson",
+        "employee_phone": "+1 (562) 654-0887",
+        "employee_address": "900 Doyle Junction\nSouth Maeve, AL 35992-2811",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 16,
+        "employee_name": "Korey Kemmer",
+        "employee_phone": "+1.469.452.2952",
+        "employee_address": "8847 O'Conner Path\nNew Roger, WY 19799-1756",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 17,
+        "employee_name": "Jesus Denesik",
+        "employee_phone": "1-618-892-4530",
+        "employee_address": "15972 Lesley Plains\nNew Guillermo, GA 60618-6339",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 18,
+        "employee_name": "Rowena Parker",
+        "employee_phone": "+1-859-772-0566",
+        "employee_address": "130 Aurore Course\nArianechester, ND 38550",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 19,
+        "employee_name": "Susie Hauck",
+        "employee_phone": "1-757-698-1738",
+        "employee_address": "623 Dorian Mount\nNew Marleneside, ND 72206-2019",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 20,
+        "employee_name": "Shane Feest",
+        "employee_phone": "314-373-2390",
+        "employee_address": "704 Graham Pine\nGuidoborough, WI 51909",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 21,
+        "employee_name": "Annetta Feil",
+        "employee_phone": "781-990-0610",
+        "employee_address": "3799 Judson Villages\nEast Bereniceshire, AR 50461-9627",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 22,
+        "employee_name": "Yasmeen Bailey",
+        "employee_phone": "+1.763.468.5351",
+        "employee_address": "601 Kamille Well Suite 529\nCummingsland, WY 85404",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 23,
+        "employee_name": "Sunny Borer",
+        "employee_phone": "+18592405374",
+        "employee_address": "502 Crawford Meadow\nLake Kaitlin, LA 74143-5348",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 24,
+        "employee_name": "Michel Effertz",
+        "employee_phone": "+1-440-453-5907",
+        "employee_address": "6844 Cale Village\nSouth Cleoraview, MA 29005-0316",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 25,
+        "employee_name": "Irving Tromp",
+        "employee_phone": "+1-316-541-9524",
+        "employee_address": "8560 Aufderhar Haven Suite 301\nMakaylaton, VA 30090",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 26,
+        "employee_name": "Grant Schuppe",
+        "employee_phone": "+1 (720) 767-8657",
+        "employee_address": "8800 Von Skyway\nKeelyborough, DE 85676",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 27,
+        "employee_name": "Domingo Schuster",
+        "employee_phone": "612-653-7681",
+        "employee_address": "62030 Kellen Summit Suite 011\nGoldenshire, KY 55816",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 28,
+        "employee_name": "Dejon Turcotte",
+        "employee_phone": "831-965-6032",
+        "employee_address": "64491 Johnny Wells Apt. 320\nRubenborough, OK 10523",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 29,
+        "employee_name": "Javon Simonis",
+        "employee_phone": "1-216-956-4123",
+        "employee_address": "58582 Borer Road Suite 718\nHartmannport, NM 17161",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 30,
+        "employee_name": "Darrick Will",
+        "employee_phone": "1-937-755-3513",
+        "employee_address": "619 Purdy Plaza Apt. 524\nLake Yvonne, AL 36450",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 31,
+        "employee_name": "Arely Thompson",
+        "employee_phone": "1-848-459-2541",
+        "employee_address": "4463 Price Fields Suite 808\nWalkerstad, MO 45600-0155",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 32,
+        "employee_name": "Andreane Jones",
+        "employee_phone": "1-425-732-4843",
+        "employee_address": "41297 Kane Junction Suite 677\nGoldnerfort, SC 70602",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 33,
+        "employee_name": "Hulda Leannon",
+        "employee_phone": "1-820-839-8619",
+        "employee_address": "5659 Rolfson Islands Suite 879\nMertzberg, MT 29633-1292",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 34,
+        "employee_name": "Scottie Breitenberg",
+        "employee_phone": "+1-515-657-1902",
+        "employee_address": "42323 Earl Isle\nNew Alaina, RI 33573-2583",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 35,
+        "employee_name": "Forest Kihn",
+        "employee_phone": "276.503.5931",
+        "employee_address": "72739 Huel View Apt. 710\nWest Horaciomouth, VA 23611-9663",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 36,
+        "employee_name": "Unique Schneider",
+        "employee_phone": "(272) 478-2328",
+        "employee_address": "38211 Francesca Road Apt. 506\nOlsonview, MT 49891",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 37,
+        "employee_name": "Filomena Lesch",
+        "employee_phone": "(559) 330-9512",
+        "employee_address": "8713 Ward Mountains Suite 610\nStracketon, IA 13075",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 38,
+        "employee_name": "Crystel Farrell",
+        "employee_phone": "405-397-4469",
+        "employee_address": "6636 Leannon Fields Apt. 855\nBernhardville, NY 27484-9842",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 39,
+        "employee_name": "Delphine Hettinger",
+        "employee_phone": "(681) 888-6690",
+        "employee_address": "9195 Carley Trace Suite 519\nEast Pasquale, NJ 51077-6389",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 40,
+        "employee_name": "Ashlee Tremblay",
+        "employee_phone": "820-659-6937",
+        "employee_address": "965 Connie Bypass\nKingmouth, RI 73525",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 41,
+        "employee_name": "Ashlee Bernhard",
+        "employee_phone": "+1-667-264-2016",
+        "employee_address": "2424 Ralph Glens Suite 530\nDewittstad, NC 31546",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 42,
+        "employee_name": "Shakira Hartmann",
+        "employee_phone": "678-420-2295",
+        "employee_address": "6470 Zboncak Trace Apt. 198\nJarenport, IN 18980",
+        "employee_role": "Hairstylist"
+    },
+    {
+        "employee_id": 43,
+        "employee_name": "Manuela Hegmann",
+        "employee_phone": "+1-478-853-4745",
+        "employee_address": "4242 Hoeger Plain Suite 943\nNew Rolandoshire, NH 06307",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 44,
+        "employee_name": "Broderick Crooks",
+        "employee_phone": "240-746-8792",
+        "employee_address": "26682 Hegmann Terrace\nToyborough, IL 20596",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 45,
+        "employee_name": "Mervin Will",
+        "employee_phone": "+1-952-912-6923",
+        "employee_address": "71557 Malcolm Creek Suite 625\nSelinatown, OK 07939",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 46,
+        "employee_name": "Arvid Frami",
+        "employee_phone": "573.962.6066",
+        "employee_address": "7106 Oceane Summit\nLake Judefort, OK 49486",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 47,
+        "employee_name": "Burdette Conn",
+        "employee_phone": "+1-480-903-3786",
+        "employee_address": "56602 Blanche Forges\nBlickside, SD 00900-9757",
+        "employee_role": "Warehouse"
+    },
+    {
+        "employee_id": 48,
+        "employee_name": "Dustin Ondricka",
+        "employee_phone": "+16786315500",
+        "employee_address": "84865 Jonathon Isle Apt. 724\nFramiborough, VA 72291",
+        "employee_role": "Owner"
+    },
+    {
+        "employee_id": 49,
+        "employee_name": "Dillan Ratke",
+        "employee_phone": "1-217-512-8583",
+        "employee_address": "188 Consuelo Land Apt. 840\nSiennastad, VT 59602-5428",
+        "employee_role": "Cashier"
+    },
+    {
+        "employee_id": 50,
+        "employee_name": "Tyreek Reichert",
+        "employee_phone": "432.305.0685",
+        "employee_address": "58268 Schmidt Ville\nKreigerhaven, IN 31018-9260",
+        "employee_role": "Owner"
+    }
+]

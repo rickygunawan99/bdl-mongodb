@@ -4,49 +4,82 @@
 namespace BasisData\Mongo\Controller;
 
 
+use BasisData\Mongo\App\Session;
 use BasisData\Mongo\config\DatabaseFactory;
-
+use MongoDB\Collection;
 class OrderController
 {
+    private Collection $database;
+
+    public function __construct()
+    {
+        $this->database = DatabaseFactory::Mongo('orders');
+    }
 
     public function add()
     {
-        session_start();
 
-        if(!isset($_SESSION['s_id'])){
-            $_SESSION['s_id'] = uniqid();
-        }
+        Session::Get('s_id') ?? Session::Set('s_id', uniqid());
 
-        $session_id = $_SESSION['s_id'];
+        $session_id = Session::Get('s_id');
 
-        $existSession = DatabaseFactory::Mongo('orders')->findOne([
+        $existSession = $this->database->find([
             'session_id' => $session_id
         ]);
 
-        $item = [
-            'item' => $_GET['id']
-        ];
 
-        if(!$existSession){
-            DatabaseFactory::Mongo('orders')->insertOne([
+        if(sizeof($existSession->toArray()) == 0){
+            $this->database->insertOne([
                 'session_id' => $session_id
             ]);
         }
 
         try {
-            DatabaseFactory::Mongo('orders')->updateOne([
+            $id = (int)$_GET['id'];
+            $existItem = $this->database->findOne([
                'session_id' => $session_id
-            ], [
-                '$push' => [
-                    'orders' => [
-                        'name' => 'test',
-                        'price' => 123339,
-                        'qty' => 3
-                    ]
-                ]
             ]);
-        }catch (\Exception $ex){
 
+            $data = [];
+
+            foreach ($existItem['orders'] ?? [] as $key=>$value) {
+                $data[] = $existItem['orders'][$key]['id'];
+            }
+
+            if(in_array($id, $data))
+            {
+                $this->database->updateOne([
+                    'session_id' => $session_id,
+                    'orders.id' => $id
+                ], [
+                    '$inc' => [
+                        'orders.$.qty' => 1
+                    ]
+                ]);
+//                echo json_encode(in_array($id, $data));
+            }
+            else
+            {
+                $product = DatabaseFactory::Mongo('products')->findOne([
+                    'id' => $id
+                ]);
+                $this->database->updateOne([
+                    'session_id' => $session_id,
+                ], [
+                    '$push' => [
+                        'orders' => [
+                            'id' => $product['id'],
+                            'name' => $product['description'],
+                            'price' => $product['price'],
+                            'qty' => 1
+                        ]
+                    ]
+                ]);
+//                echo json_encode($product);
+            }
+
+        }catch (\Exception $ex){
+            throw new \Exception('error');
         }
     }
 }
