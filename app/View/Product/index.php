@@ -284,15 +284,16 @@
                         <div class="panel-body text-center" style="padding: 0">
                             <h6>
                                 <a href="#" class="pro-title">
-                                    <?= $product['description'] ?>
+                                    <?= $product['name'] ?>
                                 </a>
                             </h6>
                             <p class="price"> Rp. <?= $product['price'] ?> </p>
-                            <p style="font-size: smaller; color: blue"><?=$product['stock']?> tersedia</p>
+                            <p style="font-size: smaller; color: blue"><?=$product['qty']?> tersedia</p>
                         </div>
                         <div class="input-group">
                             <input type="button" value="-" name="<?=$product['id']?>" class="btnDec">
-                            <input type="text" name="item_id" value=0 id="qty-<?= $product['id']?>" class="text-center" style="width: 2.5em" disabled>
+                            <input type="text" name="item_id" value=<?= $product['order_qty'] ?? 0 ?>
+                            id="qty-<?= $product['id']?>" class="text-center" style="width: 2.5em" disabled>
                             <input type="button" value="+"  name="<?=$product['id']?>" class="btnInc">
                         </div>
                     </section>
@@ -312,11 +313,11 @@
 
     for (const incButton of incButtons) {
         incButton.onclick = function (){
-            let id = incButton.name;
+            const id = incButton.name;
             let qty = Number(document.getElementById(`qty-${id}`).value);
-            qty+=1;
+            qty++;
             document.getElementById(`qty-${id}`).value = qty;
-            addCart(id);
+            updateItem(Number(id), "inc-prod");
         }
     }
 
@@ -324,26 +325,35 @@
 
     for (const decButton of decButtons) {
         decButton.onclick = function (){
-            let id = decButton.name;
+            const id = decButton.name;
             let qty = Number(document.getElementById(`qty-${id}`).value);
-            if(qty - 1 >= 0) qty-=1;
+
+            if(qty - 1 === 0){
+                updateItem(id, 'del-prod');
+                qty = 0;
+            }else if (qty - 1 < 0 ){
+                qty = 0
+            }else {
+                qty --;
+                updateItem(id, 'dec-prod')
+            }
+
             document.getElementById(`qty-${id}`).value = qty;
         }
     }
 
-    function addCart(id)
+    function updateItem(id, action)
     {
         $.ajax({
-            url: '/order/cart?action=add',
-            type: 'GET',
+            url: "/order/cart?action="+action,
+            type: "get",
             data: {
-                'id': id
+                "id": id
             },
-            success: function (data){
-               alert(data);
-            }
+            success: function (data){}
         });
     }
+
 </script>
 </body>
 </html>
