@@ -2,6 +2,8 @@
 
 namespace BasisData\Mongo\Controller;
 
+use BasisData\Mongo\App\Session;
+use BasisData\Mongo\App\View;
 use BasisData\Mongo\Services\OrderServices;
 use BasisData\Mongo\Services\ProductServices;
 use Exception;
@@ -22,14 +24,16 @@ class OrderController
     {
         $status = $_GET['action'];
         $id = (int)$_GET['id'];
+        Session::Get('s_id') ?? Session::Set('s_id', uniqid());
+        $session = Session::Get('s_id');
 
         try {
             if($status == "inc-prod") {
-                $this->update($id, 1, "63a306ea12d75");
+                $this->update($id, 1, $session);
             }elseif ($status == "del-prod"){
-                $this->delete($id,"63a306ea12d75");
+                $this->delete($id,$session);
             }else if($status == "dec-prod"){
-                $this->update($id, -1, "63a306ea12d75");
+                $this->update($id, -1, $session);
             }
         }catch (\Exception $e){
 
@@ -41,22 +45,11 @@ class OrderController
      */
     private function update(int $id, int $qty, $session = "")
     {
-//        Session::Get('s_id') ?? Session::Set('s_id', '63a341668ba00');
-
         $session_id = $session;
 
-        $existSession = $this->orderServices->isExistSession($session_id);
-
-        if($existSession == 0){
-            $data = [
-                'session_id' => $session_id,
-                'status' => 0
-            ];
-            $this->orderServices->save($data);
-        }
+         $this->orderServices->hasSessionOrInsert($session_id);
 
         try {
-//            $id = (int)$_GET['id'];
             $filter = array(
                 'session_id' => $session_id,
                 'orders' => array(
@@ -122,5 +115,13 @@ class OrderController
         }catch (Exception $exception){
 
         }
+    }
+
+    public function checkout()
+    {
+        $orderDetail = $this->orderServices->findOrderBySession('63a306ea12d75');
+        View::show('Order/checkout', [
+            'order' => $orderDetail
+        ]);
     }
 }

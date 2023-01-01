@@ -18,13 +18,14 @@ class ProductServices
         );
     }
 
-    public function findOne(array $data): object|array|null
+    public function findOne(array $filter): object|array|null
     {
-        return $this->database->findOne($data);
+        return $this->database->findOne($filter);
     }
 
-    public function findAll(): \MongoDB\Driver\Cursor
+    public function finds(array $data=[], array $filter=[]): \MongoDB\Driver\Cursor
     {
-        return $this->database->find();
+        return $this->database->find($data, $filter);
     }
+
 }

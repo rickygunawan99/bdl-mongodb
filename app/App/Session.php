@@ -17,4 +17,10 @@ class Session
 
         $_SESSION[$key] = $value;
     }
+
+    public static function Unset(string $key){
+        session_start();
+
+        unset($_SESSION['key']);
+    }
 }

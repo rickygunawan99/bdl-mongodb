@@ -9,7 +9,7 @@ use BasisData\Mongo\Controller\ProductController;
 Router::add('GET', '/', ProductController::class, 'index');
 Router::add('GET', '/products', ProductController::class, 'index');
 Router::add('GET', '/order/cart', OrderController::class, 'index');
-Router::add('GET', '/checkout', OrderController::class, 'index');
+Router::add('GET', '/checkout', OrderController::class, 'checkout');
 
 Router::run();
 

@@ -23,11 +23,23 @@ class OrderServices
         $this->database = DatabaseFactory::Mongo('orders');
     }
 
-    public function isExistSession(string $id): int
+    public function hasSession(string $id): int
     {
         return $this->database->countDocuments([
             'session_id' => $id
         ]);
+    }
+
+    public function hasSessionOrInsert(string $id): string
+    {
+        if( $this->hasSession($id) == 0){
+            $this->database->insertOne(array(
+                'session_id' => $id,
+                'status' => 0
+            ));
+        }
+
+        return $id;
     }
 
     public function save(array $data): InsertOneResult

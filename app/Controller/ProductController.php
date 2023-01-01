@@ -6,10 +6,9 @@ namespace BasisData\Mongo\Controller;
 
 use BasisData\Mongo\App\Session;
 use BasisData\Mongo\App\View;
-use BasisData\Mongo\config\DatabaseFactory;
-use BasisData\Mongo\config\Mongo;
 use BasisData\Mongo\Services\OrderServices;
 use BasisData\Mongo\Services\ProductServices;
+use Exception;
 
 class ProductController
 {
@@ -23,25 +22,34 @@ class ProductController
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function index()
     {
-        $products = iterator_to_array($this->productServices->findAll());
-        $orders = iterator_to_array($this->orderServices->findOrderBySession("63a306ea12d75"));
+        $products = iterator_to_array($this->productServices->finds());
+        $orders = iterator_to_array($this->orderServices->findOrderBySession(Session::Get('s_id')));
+        $categories = array();
+        $total = 0;
 
         foreach ($products as $product) {
             foreach ($orders as $order) {
                 foreach ($order['orders'] as $item) {
                     if($product['id'] == $item['id']){
                         $product['order_qty'] = $item['qty'];
+                        $total += $item['qty'] * $product['price'];
                     }
                 }
             }
+            $categories[] = str_replace(' ', '-', $product['category']);
+//            $categories[] = $product['category'];
         }
 
-        View::show('Product/index', [
-            'products' => $products
+        View::show('Product/index2', [
+            'products' => $products,
+            'categories' => array_unique($categories),
+            'total' => $total
         ]);
     }
+
+
 }

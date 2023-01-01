@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body{
@@ -42,7 +41,7 @@
         }
 
         .prod-cat li a {
-            color: #3b3b3b;
+
         }
 
         .prod-cat li ul {
@@ -195,22 +194,14 @@
                 Category
             </header>
             <div class="panel-body">
-                <ul class="nav prod-cat">
-                    <li>
-<!--                        <a href="#" class="active"><i class="fa fa-angle-right"></i> Dress</a>-->
-                        <a href="#" class="active"><i class=""></i> Dress</a>
-<!--                        <ul class="nav">-->
-<!--                            <li class="active"><a href="#">- Shirt</a></li>-->
-<!--                            <li><a href="#">- Pant</a></li>-->
-<!--                            <li><a href="#">- Shoes</a></li>-->
-<!--                        </ul>-->
-                    </li>
-                    <li>
-                        <a href="#"><i class=""></i> Bags &amp; Purses</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class=""></i> Accessories</a>
-                    </li>
+                <ul class="nav prod-cat" style="display: inline">
+                    <?php foreach($model['categories'] as $category) : ?>
+                        <li>
+                            <button class="btn btn-sm btn-outline-dark m-1 bg-white btn-cat" type="submit"
+                            name="c" value="<?= $category ?>"><?= $category ?>
+                            </button>
+                        </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         </section>
@@ -258,26 +249,20 @@
         -->
     </div>
     <div class="col-md-9">
-        <!--
-        <section class="panel">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <ul class="pagination pagination-sm pro-page-list">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        -->
-
+        <nav aria-label="...">
+            <ul class="pagination pagination-md d-flex justify-content-end">
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">1</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
+        </nav>
 
         <div class="row product-list">
             <?php foreach($model['products'] as $product) : ?>
                 <div class="col-md-4">
-                    <section class="panel">
+                    <section class="panel category <?= $product['category'] ?>">
                         <div class="pro-img-box">
                             <img src="https://source.unsplash.com/220x150/?foundation" alt="" />
                         </div>
@@ -287,7 +272,9 @@
                                     <?= $product['name'] ?>
                                 </a>
                             </h6>
-                            <p class="price"> Rp. <?= $product['price'] ?> </p>
+                            <p class="price" id="price-<?=$product['id']?>" data-price="<?=$product['price']?>">
+                                    <?= $product['price'] ?>
+                            </p>
                             <p style="font-size: smaller; color: blue"><?=$product['qty']?> tersedia</p>
                         </div>
                         <div class="input-group">
@@ -300,12 +287,16 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <nav class="navbar sticky-bottom bg-success w-50 mx-auto">
+        <a href="#">
+        <nav class="navbar sticky-bottom bg-success border rounded-pill w-50 mx-auto">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="#" style="color: white">Checkout</a>
-                <a class="navbar-brand fw-bold" href="#" style="color: white">Total</a>
+                <div class="navbar-brand fw-bold" style="color: white">Checkout</div>
+                <div class="navbar-brand fw-bold" style="color: white" id="total" data-total="<?= $model['total'] ?>">
+                    <?= $model['total'] ?>
+                </div>
             </div>
         </nav>
+        </a>
     </div>
 </div>
 <script>
@@ -318,6 +309,11 @@
             qty++;
             document.getElementById(`qty-${id}`).value = qty;
             updateItem(Number(id), "inc-prod");
+            const elTotal = document.getElementById('total');
+            const result = parseInt(elTotal.dataset.total)  + parseInt(document.getElementById('price-'+id).dataset.price);
+            document.getElementById('total').dataset.total = result;
+            document.getElementById('total').textContent = result;
+            document.getElementById(`qty-${id}`).value = qty;
         }
     }
 
@@ -327,18 +323,26 @@
         decButton.onclick = function (){
             const id = decButton.name;
             let qty = Number(document.getElementById(`qty-${id}`).value);
+            let check = 1;
 
             if(qty - 1 === 0){
                 updateItem(id, 'del-prod');
                 qty = 0;
             }else if (qty - 1 < 0 ){
                 qty = 0
+                check = 0;
             }else {
                 qty --;
                 updateItem(id, 'dec-prod')
             }
 
-            document.getElementById(`qty-${id}`).value = qty;
+            if(check !== 0){
+                const elTotal = document.getElementById('total');
+                const result = elTotal.dataset.total  - document.getElementById('price-'+id).dataset.price;
+                document.getElementById('total').dataset.total = result;
+                document.getElementById('total').textContent = result;
+                document.getElementById(`qty-${id}`).value = qty;
+            }
         }
     }
 
@@ -353,6 +357,23 @@
             success: function (data){}
         });
     }
+
+   /* const buttonsCat = document.getElementsByClassName('btn-cat');
+
+    for (const btnCat of buttonsCat) {
+        btnCat.onclick = function (e){
+            e.preventDefault();
+            const name = btnCat.value;
+            const categories = document.querySelectorAll('.category');
+            for (const category of categories) {
+                if(!category.classList.contains(name)){
+                    category.style.display = "none";
+                }else{
+                    category.style.display = "";
+                }
+            }
+        }
+    }*/
 
 </script>
 </body>
