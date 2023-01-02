@@ -26,7 +26,10 @@ class ProductController
      */
     public function index()
     {
-        $products = iterator_to_array($this->productServices->finds());
+        if(!Session::Get('s_id')){
+            Session::Set('s_id', uniqid());
+        }
+        $products = iterator_to_array($this->productServices->findAll());
         $orders = iterator_to_array($this->orderServices->findOrderBySession(Session::Get('s_id')));
         $categories = array();
         $total = 0;
@@ -40,8 +43,8 @@ class ProductController
                     }
                 }
             }
-            $categories[] = str_replace(' ', '-', $product['category']);
-//            $categories[] = $product['category'];
+//            $categories[] = str_replace(' ', '-', $product['category']);
+            $categories[] = $product['category'];
         }
 
         View::show('Product/index2', [

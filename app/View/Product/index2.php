@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- title -->
     <title>Shop</title>
@@ -94,10 +95,12 @@
                             </li>
                             <li>
                                 <div class="header-icons">
+                                    <a class="mobile-hide search-bar-icon" href="/checkout">Checkout</a>
 <!--                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>-->
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
+
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
@@ -177,10 +180,10 @@
                         </p>
                         <p style="font-size: smaller; color: blue"><?=$product['qty']?> tersedia</p>
                         <div class="input-group d-flex justify-content-center">
-                            <input type="button" value="-" name="<?=$product['id']?>" class="btnDec btn btn-outline-dark">
+                            <input type="button" value="-" name="<?=$product['id']?>" class="btnDec btn btn-outline-secondary border border-opacity-10">
                             <input type="text" name="item_id" value=<?= $product['order_qty'] ?? 0 ?>
-                            id="qty-<?= $product['id']?>" class="text-center" style="width: 2.5em" disabled>
-                            <input type="button" value="+"  name="<?=$product['id']?>" class="btnInc btn btn-outline-dark">
+                            id="qty-<?= $product['id']?>" class="text-center border border-opacity-20" style="width: 2.5em" disabled>
+                            <input type="button" value="+"  name="<?=$product['id']?>" class="btnInc btn btn-outline-secondary border border-opacity-10">
                         </div>
     <!--                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>-->
                     </div>
@@ -188,29 +191,29 @@
             <?php endforeach; ?>`
         </div>
 
-        <nav class="navbar fixed-bottom bg-success border rounded-pill w-25 mx-auto">
-            <div class="container">
-                <div class="navbar-brand fw-bold" style="color: white">Checkout</div>
-                <div class="navbar-brand fw-bold" style="color: white" id="total" data-total="<?= $model['total'] ?>">
-                    <?= $model['total'] ?>
-                </div>
-            </div>
-        </nav>
+<!--        <nav class="navbar fixed-bottom bg-success border rounded-pill w-25 mx-auto">-->
+<!--            <div class="container">-->
+<!--                <div class="navbar-brand fw-bold" style="color: white">Checkout</div>-->
+<!--                <div class="navbar-brand fw-bold" style="color: white" id="total" data-total="--><?//= $model['total'] ?><!--">-->
+<!--                    --><?//= $model['total'] ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </nav>-->
 
 
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="pagination-wrap">
-                    <ul>
-                        <li><a href="#">Prev</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a class="active" href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 text-center">-->
+<!--                <div class="pagination-wrap">-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Prev</a></li>-->
+<!--                        <li><a href="#">1</a></li>-->
+<!--                        <li><a class="active" href="#">2</a></li>-->
+<!--                        <li><a href="#">3</a></li>-->
+<!--                        <li><a href="#">Next</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <!-- end products -->

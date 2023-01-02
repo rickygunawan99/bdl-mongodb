@@ -24,7 +24,7 @@ class OrderController
     {
         $status = $_GET['action'];
         $id = (int)$_GET['id'];
-        Session::Get('s_id') ?? Session::Set('s_id', uniqid());
+
         $session = Session::Get('s_id');
 
         try {
@@ -119,9 +119,29 @@ class OrderController
 
     public function checkout()
     {
-        $orderDetail = $this->orderServices->findOrderBySession('63a306ea12d75');
+        $orderDetail = $this->orderServices->findOrderBySession(Session::Get('s_id'));
         View::show('Order/checkout', [
             'order' => $orderDetail
         ]);
+    }
+
+    public function doCheckout()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        if(Session::Get('s_id')){
+            $filter = array(
+                'session_id' => Session::Get('s_id')
+            );
+            $update = array(
+                '$set' => array(
+                    'order_date' => date('Y-m-d H:i:s')
+                )
+            );
+
+            $this->orderServices->updateOne($filter, $update);
+
+            Session::Unset('s_id');
+        }
+        View::redirect('/');
     }
 }

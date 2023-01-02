@@ -5,6 +5,7 @@ namespace BasisData\Mongo\Services;
 
 
 use BasisData\Mongo\config\DatabaseFactory;
+use BasisData\Mongo\Entity\ProductEntity;
 use Exception;
 use MongoDB\Collection;
 use MongoDB\Driver\Cursor;
@@ -63,4 +64,10 @@ class OrderServices
             'session_id' => $sessionId
         ]);
     }
+
+    public function findAll(array $filter = [], array $option = [])
+    {
+        return $this->database->find($filter, $option);
+    }
+
 }

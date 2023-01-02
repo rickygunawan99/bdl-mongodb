@@ -6,21 +6,31 @@ namespace BasisData\Mongo\App;
 
 class Session
 {
-    public static function Get(string $name){
-        session_start();
 
-        return $_SESSION[$name];
+    public static function Get(string $name){
+        $_SESSION ?? session_start();
+
+        return $_SESSION[$name] ?? null;
     }
 
     public static function Set(string $key, string $value){
-        session_start();
+        $_SESSION ?? session_start();
 
         $_SESSION[$key] = $value;
     }
 
     public static function Unset(string $key){
-        session_start();
+        $_SESSION ?? session_start();
 
-        unset($_SESSION['key']);
+        unset($_SESSION[$key]);
+    }
+
+    public static function Flush(string $key)
+    {
+        $data = self::Get($key);
+
+        self::Unset($key);
+
+        return $data;
     }
 }
